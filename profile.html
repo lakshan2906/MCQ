@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .back-button {
+            background-color: #ffde59;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 1rem;
+            position: relative;
+            bottom: 410px;    
+            right: 620px;               
+        }
+
+        .back-button:hover {
+            background-color: #ffd000;
+        }
+
+        .profile-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .profile-card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .nav-links {
+            margin-top: 1.5rem;
+        }
+
+        .nav-links a {
+            margin: 0 10px;
+            color: #ffde59;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #fff134;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="profile-card">
+        <h1>Hello, I'm Lakshan.M!</h1>
+        <p>
+            I'm a web developer passionate about building "interactive and visually exciting projects".
+            This quiz app is one of my favorites—featuring animations, timers, and personalized scoring that
+            make learning more dynamic. I love combining JavaScript, HTML, and CSS to craft fun, meaningful experiences.
+        </p>
+    </div>
+    <footer style="margin-top: 2rem; text-align: center; font-size: 0.9rem;">&copy; 2023 created by Lakshan.M.</footer>
+    <button onclick="goBack()" class="back-button">⬅ Back</button>
+</body>
+
+</html>
+<script>
+    function goBack() {
+        window.location.href = "index.html";
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const hour = new Date().getHours();
+        let greeting;
+
+        if (hour < 12) {
+            greeting = "Good morning!";
+        } else if (hour < 18) {
+            greeting = "Good afternoon!";
+        } else {
+            greeting = "Good evening!";
+        }
+
+        const profileCard = document.querySelector('.profile-card');
+        const greetingElement = document.createElement('p');
+        greetingElement.textContent = greeting;
+        profileCard.prepend(greetingElement);
+    });
+
+</script>

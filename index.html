@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 0.5em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2em;
+        }
+
+        .start-btn {
+            height: 45 px;
+            background-color: #fff;
+            color: #3a1c71;
+            padding: 0.8em 2em;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            background-color: #fcefee;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #fff;
+            color: #3a1c71;
+            padding: 0.8em 1.5em;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            background-color: white;
+            color: #3a1c71;
+            padding: 1em;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu a {
+            display: block;
+            color: #3a1c71;
+            text-decoration: none;
+            padding: 0.5em 0;
+        }
+
+        .menu a:hover {
+            color: #d76d77;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <div class="menu" id="menu">
+        <a href="history.html">📜 History</a>
+        <a href="profile.html">👤 Profile</a>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Test Your Brain!</h1>
+        <p class="subtitle">Challenge yourself with our MCQ quiz and see how you score.</p>
+        <input type="text" id="name" placeholder="Enter your name"
+            style="padding: 0.5em; width: 200px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 1em;" />
+        <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <script>
+        function startQuiz() {
+            const name = document.getElementById("name").value;
+            if (name) {
+                localStorage.setItem("userName", name);
+                window.location.href = "mcq.html";
+            } else {
+                alert("Please enter your name.");
+            }
+            function startQuiz() {
+                const nameInput = document.getElementById("name");
+                const name = nameInput.value;
+
+                if (name) {
+                    localStorage.setItem("userName", name);
+                    nameInput.value = ""; 
+                    window.location.href = "quiz1.html";
+                } else {
+                    alert("Please enter your name.");
+                }
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+
+</html>

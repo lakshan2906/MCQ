@@ -1,0 +1,93 @@
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to right, #ffaf7b, #d76d77, #3a1c71);
+        color: white;
+        padding: 2em;
+        text-align: center;
+    }
+
+    .back-button {
+        background-color: #ffde59;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 1rem;
+        position: relative;
+        bottom: 440px;
+        right: 620px;
+    }
+
+    .back-button:hover {
+        background-color: #ffd000;
+    }
+
+    h1 {
+        margin-bottom: 1em;
+    }
+
+    .history-entry {
+        background-color: rgba(255, 255, 255, 0.1);
+        margin: 1em auto;
+        padding: 1em;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        text-align: left;
+    }
+</style>
+
+<!-- inside <body> -->
+<h1>Quiz History</h1>
+<div id="history-container"></div>
+<button onclick="clearHistory()"
+    style="margin-top: 2em; padding: 0.7em 1.5em; border: none; border-radius: 8px; background-color: #fff; color: #3a1c71; font-weight: bold; cursor: pointer;">
+    Clear All History
+</button>
+<button onclick="goBack()" class="back-button">⬅ Back</button>
+
+<script>
+    function goBack() {
+        window.location.href = "index.html"; 
+    }
+    function renderHistory() {
+        const container = document.getElementById("history-container");
+        container.innerHTML = ""; // Clear previous content
+        const historyData = JSON.parse(localStorage.getItem("quizHistory")) || [];
+
+        if (historyData.length === 0) {
+            container.innerHTML = "<p>No history available yet.</p>";
+            return;
+        }
+
+        historyData.forEach((entry, index) => {
+            const div = document.createElement("div");
+            div.className = "history-entry";
+            div.innerHTML = `
+        <strong>${entry.name}</strong> scored <strong>${entry.score}</strong> on ${entry.date}
+        <button onclick="deleteEntry(${index})" style="float:right; background:#ff4d4d; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Delete</button>
+      `;
+            container.appendChild(div);
+        });
+    }
+
+    function deleteEntry(index) {
+        const historyData = JSON.parse(localStorage.getItem("quizHistory")) || [];
+        historyData.splice(index, 1); // Remove the selected record
+        localStorage.setItem("quizHistory", JSON.stringify(historyData));
+        renderHistory();
+    }
+
+    function clearHistory() {
+        if (confirm("Are you sure you want to delete all history?")) {
+            localStorage.removeItem("quizHistory");
+            renderHistory();
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", renderHistory);
+</script>
