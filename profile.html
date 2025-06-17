@@ -28,9 +28,9 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             margin-bottom: 1rem;
-            position: relative;
-            bottom: 410px;    
-            right: 620px;               
+            position: absolute;
+            bottom: 570px;    
+            right: 1250px;               
         }
 
         .back-button:hover {
@@ -74,16 +74,18 @@
             color: #ffffff;
         }
         footer {
-            margin-top: 2rem;
             text-align: center;
             font-size: 0.9rem;
-            color: #fff134;
+            background-color: #fff134;
+            color: #000;
+            width: 100%;
         }
         
     </style>
 </head>
 
 <body>
+    <button class="back-button" onclick="goBack()">Back</button>
     <div class="profile-card">
         <h1>Hello, I'm Lakshan.M!</h1>
         <p>
@@ -92,8 +94,6 @@
             make learning more dynamic. I love combining JavaScript, HTML, and CSS to craft fun, meaningful experiences.
         </p>
     </div>
-    <footer style="margin-top: 2rem; text-align: center; font-size: 0.9rem;">&copy; 2023 created by Lakshan.M.</footer>
-    <button onclick="goBack()" class="back-button">⬅ Back</button>
 </body>
 
 </html>
